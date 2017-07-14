@@ -1,0 +1,31 @@
+---
+# config client ldap
+
+- include_vars: 'vars/{{ansible_os_family}}.yml'
+  tags: nssldap
+
+- include: 'tasks/{{ansible_os_family}}.yml'
+  tags: nssldap
+
+- name: Config nslcd.conf
+  template:
+    dest: '{{nslcd_conf}}'
+    src: nslcd.conf.j2
+  notify: restart ldap client
+  tags: nssldap
+
+- name: ensure nslcd is started
+  service:
+    name: nslcd
+    state: started
+  tags: nssldap
+
+- name: ssh allowed groups
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^AllowGroups'
+    line: 'AllowGroups	{{sshd_allow_groups}}'
+    insertafter: '.*PermitTunnel'
+  notify: restart sshd
+  when: sshd_allow_groups != ""
+  tags: sshdconf
