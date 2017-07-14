@@ -1,3 +1,30 @@
 ---
+galaxy_info:
+  author: Geoffroy Desvernay
+  description: ldap client (nss)
+  company: Ecole Centrale Marseille
+
+  license: BSD
+
+  min_ansible_version: 2.3
+
+  # If this a Container Enabled role, provide the minimum Ansible Container version.
+  # min_ansible_container_version:
+
+  platforms:
+    - name: FreeBSD
+      versions:
+        - 11.0
+        - 10.3
+    - name: Debian
+      versions:
+        - stretch
+        - jessie
+
+  galaxy_tags:
+    - ldap
+    - nss
+    - pam
+
 dependencies:
   - role: criecm.common

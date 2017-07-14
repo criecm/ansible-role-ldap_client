@@ -6,8 +6,10 @@ tls_reqcert {{ ldap_tls_reqcert }}
 {% endif %}
 {% endif %}
 uri	{{ ldap_uri }}
+{% if ldap_binddn %}
 binddn	{{ ldap_binddn }}
 bindpw	{{ ldap_bindpw }}
+{% endif %}
 base	{{ ldap_base }}
 base passwd	{{ ldap_passwd_ou }},{{ ldap_base }}
 base shadow	{{ ldap_passwd_ou }},{{ ldap_base }}

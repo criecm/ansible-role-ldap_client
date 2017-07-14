@@ -1,8 +1,8 @@
 ---
-ldap_base: 'dc=univ,dc=fr'
-ldap_uri: 'ldaps://ldapr.univ.fr/ ldaps://ldap.univ.fr/'
-ldap_binddn: 'cn=pam,ou=users,dc=univ,dc=fr'
-ldap_bindpw: 'pampass'
+ldap_base: ''
+ldap_uri: ''
+ldap_binddn: ''
+ldap_bindpw: ''
 ldap_etcdir: /etc/ldap
 ldap_passwd_ou: 'ou=People'
 ldap_group_ou: 'ou=Group'
