@@ -11,6 +11,7 @@
   template:
     dest: '{{nslcd_conf}}'
     src: nslcd.conf.j2
+    mode: '0600'
   notify: restart ldap client
   tags: nssldap
 
