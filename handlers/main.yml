@@ -9,6 +9,7 @@
   service:
     name: nscd
     state: stopped
+  failed_when: False
 
 - name: rebuild FreeBSD pwdb 
   command: /usr/sbin/pwd_mkdb /etc/master.passwd

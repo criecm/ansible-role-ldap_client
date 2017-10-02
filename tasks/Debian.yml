@@ -2,7 +2,7 @@
 # config client ldap Debian
 
 - block:
-  - name: config client LDAP Debian 8
+  - name: config client LDAP Debian 8/9
     debconf:
       name: '{{item.name}}'
       question: '{{item.question}}'
@@ -17,6 +17,7 @@
       - { name: 'nslcd', question: 'nslcd/ldap-cacertfile', vtype: 'string', value: '{{ldap_tls_cacert}}' }
       - { name: 'nslcd', question: 'nslcd/ldap-reqcert', vtype: 'string', value: '{{ldap_tls_reqcert}}' }
       - { name: 'nslcd', question: 'nslcd/ldap-starttls', vtype: 'boolean', value: 'true' }
+      - { name: 'nslcd', question: 'libraries/restart-without-asking', vtype: 'boolean', value: 'true' }
       - { name: 'libnss-ldapd', question: 'libnss-ldapd/nsswitch', vtype: 'multiselect', value: '{% if ldap_nss %}passwd, group, shadow{% if ldap_autofs %}, automount{% endif %}{% endif %}' }
       - { name: 'libpam-ldapd', question: 'libpam-ldapd/enable_shadow', vtype: 'boolean', value: 'true' }
 
@@ -29,5 +30,6 @@
       - nslcd-utils
       - libnss-ldapd
       - libpam-ldapd
-  when: (ansible_os_family == 'Debian' and ansible_distribution_major_version == '8')
   tags: nssldap
+
+
