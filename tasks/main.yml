@@ -4,7 +4,7 @@
 - include_vars: 'vars/{{ansible_os_family}}.yml'
   tags: nssldap
 
-- include: 'tasks/{{ansible_os_family}}.yml'
+- include_tasks: 'tasks/{{ansible_os_family}}.yml'
   tags: nssldap
 
 - name: Config nslcd.conf
