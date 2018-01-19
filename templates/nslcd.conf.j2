@@ -11,9 +11,13 @@ binddn	{{ ldap_binddn }}
 bindpw	{{ ldap_bindpw }}
 {% endif %}
 base	{{ ldap_base }}
+{% if ldap_passwd_ou %}
 base passwd	{{ ldap_passwd_ou }},{{ ldap_base }}
 base shadow	{{ ldap_passwd_ou }},{{ ldap_base }}
+{% endif %}
+{% if ldap_group_ou %}
 base group	{{ ldap_group_ou }},{{ ldap_base }}
+{% endif %}
 filter passwd	{{ ldap_passwd_filter }}
 pam_authz_search	{{ ldap_authz_filter }}
 filter group	{{ ldap_group_filter }}
