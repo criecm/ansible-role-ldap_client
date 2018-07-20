@@ -21,7 +21,13 @@ base group	{{ ldap_group_ou }},{{ ldap_base }}
 filter passwd	{{ ldap_passwd_filter }}
 pam_authz_search	{{ ldap_authz_filter }}
 filter group	{{ ldap_group_filter }}
-idle_timelimit	300
+{% if ldap_timelimit %}
+bind_timelimit {{ ldap_timelimit }}
+timelimit {{ ldap_timelimit }}
+{% endif }
+{% if ldap_idle_timelimit %}
+idle_timelimit	{{ ldap_idle_timelimit }}
+{% endif %}
 nss_initgroups_ignoreusers	ALLLOCAL
 nss_min_uid	{{ ldap_min_uid }}
 {% if ldap_force_shell %}
