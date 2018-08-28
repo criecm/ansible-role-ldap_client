@@ -24,7 +24,7 @@ filter group	{{ ldap_group_filter }}
 {% if ldap_timelimit %}
 bind_timelimit {{ ldap_timelimit }}
 timelimit {{ ldap_timelimit }}
-{% endif }
+{% endif %}
 {% if ldap_idle_timelimit %}
 idle_timelimit	{{ ldap_idle_timelimit }}
 {% endif %}
