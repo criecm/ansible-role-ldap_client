@@ -16,7 +16,7 @@
       - { name: 'nslcd', question: 'nslcd/ldap-auth-type', vtype: 'select', value: 'simple' }
       - { name: 'nslcd', question: 'nslcd/ldap-cacertfile', vtype: 'string', value: '{{ldap_tls_cacert}}' }
       - { name: 'nslcd', question: 'nslcd/ldap-reqcert', vtype: 'string', value: '{{ldap_tls_reqcert}}' }
-      - { name: 'nslcd', question: 'nslcd/ldap-starttls', vtype: 'boolean', value: 'true' }
+      - { name: 'nslcd', question: 'nslcd/ldap-starttls', vtype: 'boolean', value: '{% if ldap_starttls %}true{% else %}false{% endif %}' }
       - { name: 'nslcd', question: 'libraries/restart-without-asking', vtype: 'boolean', value: 'true' }
       - { name: 'libnss-ldapd', question: 'libnss-ldapd/nsswitch', vtype: 'multiselect', value: '{% if ldap_nss %}passwd, group, shadow{% if ldap_autofs %}, automount{% endif %}{% endif %}' }
       - { name: 'libpam-ldapd', question: 'libpam-ldapd/enable_shadow', vtype: 'boolean', value: 'true' }

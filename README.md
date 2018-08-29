@@ -24,6 +24,7 @@ UNIX accounts via LDAP (nslcd) (Debian,FreeBSD)
 * `ldap_group_filter` ('(objectClass=posixGroup)')
 * `ldap_min_uid` (1000)
 * `ldap_nss` (true)
+* `ldap_starttls` (false)
 
 ### Optional
 * `pam_ldap_services` ([]) - FreeBSD only - does nothing if empty

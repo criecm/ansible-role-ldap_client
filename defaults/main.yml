@@ -21,3 +21,4 @@ pam_config_dir: /etc/pam.d
 ldap_validnames: ''
 ldap_nss: True
 ldap_autofs: False
+ldap_starttls: False
