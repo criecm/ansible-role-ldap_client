@@ -11,8 +11,5 @@
     state: stopped
   failed_when: False
 
-- name: rebuild FreeBSD pwdb 
-  command: /usr/sbin/pwd_mkdb /etc/master.passwd
-
 - name: rebuild login.conf database
   command: /usr/bin/cap_mkdb /etc/login.conf

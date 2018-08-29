@@ -48,7 +48,9 @@
       regexp: '^\+:'
       line: '+:*:::{{ldap_force_homedir_by_class}}:0:0:::{{ldap_force_shell}}'
       state: present
-    notify: rebuild FreeBSD pwdb
+    register: pwdmkdb
+  - command: 'pwd_mkdb /etc/master.passwd'
+    when: pwdmkdb.changed
   tags: nssldap
   when: ldap_nss == True
 
