@@ -23,13 +23,12 @@
 
   - name: Installe client LDAP
     apt:
-      name: '{{item}}'
+      name:
+        - nslcd
+        - nslcd-utils
+        - libnss-ldapd
+        - libpam-ldapd
       state: installed
-    with_items:
-      - nslcd
-      - nslcd-utils
-      - libnss-ldapd
-      - libpam-ldapd
   tags: nssldap
 
 
