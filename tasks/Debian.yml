@@ -28,7 +28,7 @@
         - nslcd-utils
         - libnss-ldapd
         - libpam-ldapd
-      state: installed
+      state: present
   tags: nssldap
 
 
