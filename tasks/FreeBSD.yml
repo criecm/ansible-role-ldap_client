@@ -60,7 +60,7 @@
     dest: /etc/login.conf
     regexp: '^{{ldap_force_homedir_by_class}}:'
     state: absent
-  check_mode: yes
+  check_mode: True
   failed_when: false
   changed_when: false
   register: ldapUserClassInLoginConf
@@ -71,7 +71,7 @@
     dest: /etc/login.conf
     regexp: '^# BEGIN ANSIBLE MANAGED ldap_force_homedir_by_class #$'
     state: absent
-  check_mode: yes
+  check_mode: True
   failed_when: false
   changed_when: false
   register: ldapUserClassByAnsible
