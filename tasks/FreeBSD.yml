@@ -35,7 +35,7 @@
       lineinfile:
         dest: /etc/passwd
         regexp: '^\+:'
-        line: '+:*:::::{{ldap_force_shell}}'
+        line: '+:*:::::{{ ldap_force_shell }}'
         state: present
     - name: Enable LDAP /etc/group
       lineinfile:
@@ -50,7 +50,8 @@
         line: '+:*:::{{ ldap_force_homedir_by_class }}:0:0:::{{ ldap_force_shell }}'
         state: present
       register: pwdmkdb
-    - command: 'pwd_mkdb /etc/master.passwd'
+    - name: pwd_mkdb
+      command: 'pwd_mkdb /etc/master.passwd'
       when: pwdmkdb.changed
   tags: nssldap
   when: ldap_nss | bool
@@ -88,7 +89,7 @@
       	:tc=default:
     validate: cap_mkdb %s
   notify: rebuild login.conf database
-  when: ldap_force_homedir_by_class != '' and ((ldapUserClassInLoginConf.found == 0) or (ldapUserClassByAnsible.found == 1)) and ldap_nss == True
+  when: ldap_force_homedir_by_class | lenght > 0 and ((ldapUserClassInLoginConf.found == 0) or (ldapUserClassByAnsible.found == 1)) and ldap_nss | bool
 
 # config PAM: ssh ou tout
 - name: stat pam config
