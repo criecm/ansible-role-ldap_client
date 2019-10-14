@@ -117,4 +117,3 @@
     dest: '{{ pam_config_dir }}/{{ item }}'
   with_items: '{{ pam_ldap_services }}'
   when: 'item not in statpam["results"] | map(attribute="stat") | selectattr("path", "defined") | map(attribute="path") | join(" ")'
-
