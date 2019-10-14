@@ -89,7 +89,7 @@
       	:tc=default:
     validate: cap_mkdb %s
   notify: rebuild login.conf database
-  when: ldap_force_homedir_by_class | lenght > 0 and ((ldapUserClassInLoginConf.found == 0) or (ldapUserClassByAnsible.found == 1)) and ldap_nss | bool
+  when: ldap_force_homedir_by_class | length > 0 and ((ldapUserClassInLoginConf.found == 0) or (ldapUserClassByAnsible.found == 1)) and ldap_nss | bool
 
 # config PAM: ssh ou tout
 - name: stat pam config

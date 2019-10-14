@@ -30,5 +30,5 @@
     line: 'AllowGroups	{{ sshd_allow_groups }}'
     insertafter: '.*PermitTunnel'
   notify: restart sshd
-  when: sshd_allow_groups | lenght > 0
+  when: sshd_allow_groups | length > 0
   tags: sshdconf
