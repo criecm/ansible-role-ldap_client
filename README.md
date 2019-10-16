@@ -31,8 +31,6 @@ UNIX accounts via LDAP (nslcd) (Debian,FreeBSD)
   you may need 'login', maybe 'sshd', 'imap', … whatever pam service you need
 * `ldap_validnames` ('')
   see `man nslcd.conf`
-* `sshd_allow_groups` ('')
-  define AllowGroups in `/etc/ssh/sshd_config`
 * `ldap_autofs` (False)
   allow automount nss in nslcd.conf
 

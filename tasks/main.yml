@@ -22,13 +22,3 @@
     name: nslcd
     state: started
   tags: nssldap
-
-- name: ssh allowed groups
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: '^AllowGroups'
-    line: 'AllowGroups	{{ sshd_allow_groups }}'
-    insertafter: '.*PermitTunnel'
-  notify: restart sshd
-  when: sshd_allow_groups | length > 0
-  tags: sshdconf
