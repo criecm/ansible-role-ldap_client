@@ -5,7 +5,7 @@ tls_cacertfile {{ ldap_tls_cacert }}
 tls_reqcert {{ ldap_tls_reqcert }}
 {% endif %}
 {% endif %}
-uri	{{ ldap_uri }}
+uri	{{ ldapr_uri }}
 {% if ldap_binddn %}
 binddn	{{ ldap_binddn }}
 bindpw	{{ ldap_bindpw }}
