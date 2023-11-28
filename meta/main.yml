@@ -7,7 +7,7 @@ galaxy_info:
 
   license: BSD
 
-  min_ansible_version: 2.8
+  min_ansible_version: 2.11
 
   # If this a Container Enabled role, provide the minimum Ansible Container version.
   # min_ansible_container_version:
@@ -18,6 +18,8 @@ galaxy_info:
         - all
     - name: Debian
       versions:
+        - bookworm
+        - bullseye
         - buster
         - stretch
         - jessie
