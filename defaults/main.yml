@@ -22,3 +22,4 @@ ldap_validnames: ''
 ldap_nss: True
 ldap_autofs: False
 ldap_starttls: False
+ldap_tls_reqcert: 'allow'
