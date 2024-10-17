@@ -20,6 +20,18 @@
 
 - name: Config nss
   block:
+    - name: Config nsswitch.conf FreeBSD for DC
+      lineinfile:
+        dest: '/etc/nsswitch.conf'
+        regexp: '{{ item.regexp }}'
+        line: '{{ item.line }}'
+        state: present
+      with_items:
+        - { regexp: '^group_compat:', line: 'group_compat: ldap winbind' }
+        - { regexp: '^passwd_compat:', line: 'passwd_compat: ldap winbind' }
+        - { regexp: '^group:', line: 'group: compat' }
+        - { regexp: '^passwd:', line: 'passwd: compat' }
+      when: smb_is_dc | default(false)
     - name: Config nsswitch.conf FreeBSD
       lineinfile:
         dest: '/etc/nsswitch.conf'
@@ -31,6 +43,7 @@
         - { regexp: '^passwd_compat:', line: 'passwd_compat: ldap' }
         - { regexp: '^group:', line: 'group: compat' }
         - { regexp: '^passwd:', line: 'passwd: compat' }
+      when: not (smb_is_dc | default(false))
     - name: Enable LDAP /etc/passwd
       lineinfile:
         dest: /etc/passwd
